@@ -1,0 +1,28 @@
+{
+  "name": "question",
+  "display_name": "Question",
+  "schema": {
+    "question": {
+      "type": "text",
+      "required": true,
+      "display_name": "Question"
+    },
+    "options": {
+      "type": "textarea",
+      "required": true,
+      "display_name": "Answer Options"
+    },
+    "correct_answer": {
+      "type": "text",
+      "required": true,
+      "display_name": "Correct Answer"
+    },
+    "explanation": {
+      "type": "textarea",
+      "required": true,
+      "display_name": "Explanation"
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

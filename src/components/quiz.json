@@ -1,0 +1,37 @@
+{
+  "name": "quiz",
+  "display_name": "Quiz",
+  "schema": {
+    "title": {
+      "type": "text",
+      "required": true,
+      "display_name": "Quiz Title"
+    },
+    "difficulty": {
+      "type": "text",
+      "required": true,
+      "display_name": "Difficulty"
+    },
+    "source_url": {
+      "type": "text",
+      "display_name": "Source URL"
+    },
+    "source_title": {
+      "type": "text",
+      "display_name": "Source Title"
+    },
+    "created_date": {
+      "type": "text",
+      "display_name": "Created Date"
+    },
+    "questions": {
+      "type": "bloks",
+      "required": true,
+      "display_name": "Questions",
+      "restrict_components": true,
+      "component_whitelist": ["question"]
+    }
+  },
+  "is_root": true,
+  "is_nestable": false
+}

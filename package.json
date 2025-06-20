@@ -1,0 +1,25 @@
+{
+  "name": "bitcoinquizflow",
+  "version": "1.0.0",
+  "description": "Auto-generate Bitcoin quizzes from blog posts using Storyblok + Runner H",
+  "main": "index.js",
+  "scripts": {
+    "dev": "runnerh dev",
+    "build": "runnerh build",
+    "run": "runnerh run",
+    "frontend": "vite serve src/frontend"
+  },
+  "dependencies": {
+    "@runnerh/cli": "^1.0.0",
+    "@storyblok/management-api": "^1.0.0",
+    "@google/generative-ai": "^0.2.0",
+    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

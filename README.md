@@ -132,11 +132,13 @@ src/
 
 ```bash
 # Test individual components
-npm run scrape  # Test blog scraping
+node src/agents/scrapeBlogPosts.js # Test blog scraping
 node src/agents/generateQuiz.js  # Test AI generation
 node src/agents/pushToStoryblok.js  # Test Storyblok push
 
 # for Real
+node src/utils/storyblokSchemas.cjs # schema pusher
+npm run scrape  # Test blog scraping
 npm run generate    # Generate quizzes from blog content
 npm run dev        # Start frontend development server
 npm run build      # Build for production
@@ -192,9 +194,114 @@ Scheduled workflow runs weekly to generate new quizzes automatically.
 - **Manual Override** - Edit quizzes directly in Storyblok interface
 
 
+## 📖 Detailed Setup Guide
+
+### 🔧 Storyblok Configuration
+
+1. **Create a Storyblok Space**
+
+   - Sign up at [storyblok.com](https://www.storyblok.com/)
+   - Create a new space for your project
+
+2. **Generate API Tokens**
+
+   - **OAuth Token**: Settings → Access Tokens → Management Token
+   - **Preview Token**: Settings → Access Tokens → Preview Token
+   - **Space ID**: Found in space settings URL
+
+3. **Component Schema** The app automatically creates these content types:
+
+   **Quiz Component:**
+
+   ```json
+   {
+     "name": "quiz",
+     "display_name": "Quiz",
+     "schema": {
+       "title": {
+         "type": "text",
+         "required": true,
+         "display_name": "Quiz Title"
+       },
+       "difficulty": {
+         "type": "text",
+         "required": true,
+         "display_name": "Difficulty"
+       },
+       "source_url": {
+         "type": "text",
+         "display_name": "Source URL"
+       },
+       "source_title": {
+         "type": "text",
+         "display_name": "Source Title"
+       },
+       "created_date": {
+         "type": "text",
+         "display_name": "Created Date"
+       },
+       "questions": {
+         "type": "bloks",
+         "required": true,
+         "display_name": "Questions",
+         "restrict_components": true,
+         "component_whitelist": ["question"]
+       }
+     },
+     "is_root": true,
+     "is_nestable": false
+   }
+   ```
+
+   **Question Component:**
+
+   ```json
+   {
+     "name": "question",
+     "display_name": "Question",
+     "schema": {
+       "question": {
+         "type": "text",
+         "required": true,
+         "display_name": "Question"
+       },
+       "options": {
+         "type": "textarea",
+         "required": true,
+         "display_name": "Answer Options"
+       },
+       "correct_answer": {
+         "type": "text",
+         "required": true,
+         "display_name": "Correct Answer"
+       },
+       "explanation": {
+         "type": "textarea",
+         "required": true,
+         "display_name": "Explanation"
+       }
+     },
+     "is_root": false,
+     "is_nestable": true
+   }
+   ```
+
+
+
+### 🤖 Google Gemini AI Setup
+
+1. **Get API Key**
+   - Visit [Google AI Studio](https://ai.google.dev/)
+   - Create a new project
+   - Generate an API key
+2. **Model Configuration**
+   - Uses `gemini-2.0-flash` model
+   - Optimized prompts for quiz generation
+   - JSON response parsing with error handling
+
 
 ## 📄 License
 
 MIT License - Free to use and modify
 
-**Built with ❤️ for Bitcoin education
+**Built with ❤️ for Bitcoin education**

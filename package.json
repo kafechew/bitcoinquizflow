@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node src/index.js",
-    "build": "tsc",
+    "dev": "vite serve src/frontend --port 3000",
+    "build": "vite build src/frontend",
     "start": "node dist/index.js",
     "frontend": "vite serve src/frontend --port 3000 --host",
     "frontend:build": "vite build src/frontend",

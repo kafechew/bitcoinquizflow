@@ -5,5 +5,8 @@ export default defineConfig({
   envDir: '../../', // Look for .env in project root
   server: {
     port: 3000
+  },
+  build: {
+    outDir: '../../dist'
   }
 });

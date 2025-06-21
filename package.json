@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite serve src/frontend --port 3000",
-    "build": "vite build src/frontend",
+    "build": "vite build src/frontend && mkdir -p dist && cp -r src/frontend/dist/* dist/",
     "start": "node dist/index.js",
     "frontend": "vite serve src/frontend --port 3000 --host",
     "frontend:build": "vite build src/frontend",
